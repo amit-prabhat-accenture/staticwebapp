@@ -126,6 +126,7 @@ function onSignin(idToken) {
     }
 
 function getOAuthCardResourceUri(activity) {
+   console.log(activity);
   if (activity &&
        activity.attachments &&
        activity.attachments[0] &&
@@ -145,6 +146,7 @@ function exchangeTokenAsync(resourceUri) {
 	console.log(clientApplication);
      return clientApplication.acquireTokenSilent(requestObj)
        .then(function (tokenResponse) {
+	       console.log(tokenResponse);
 	 return tokenResponse.accessToken;
 	 })
 	 .catch(function (error) {
@@ -204,7 +206,7 @@ async function fetchJSON(url, options = {}) {
 	var userId = clientApplication.account?.accountIdentifier != null ? 
 					("You-customized-prefix" + clientApplication.account.accountIdentifier).substr(0, 64) 
 					: (Math.random().toString() + Date.now().toString()).substr(0,64);
-			
+	console.log(userId);
    const { token } = await fetchJSON(theURL);
    const directLine = window.WebChat.createDirectLine({ token });
    const store = WebChat.createStore({}, ({ dispatch }) => next => action => {
