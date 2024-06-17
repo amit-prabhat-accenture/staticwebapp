@@ -142,6 +142,7 @@ function exchangeTokenAsync(resourceUri) {
      let requestObj = {
        scopes: [resourceUri]
      };
+	console.log(clientApplication);
      return clientApplication.acquireTokenSilent(requestObj)
        .then(function (tokenResponse) {
 	 return tokenResponse.accessToken;
@@ -192,6 +193,7 @@ async function fetchJSON(url, options = {}) {
        if (!clientApplication) {
 	 clientApplication = new Msal.UserAgentApplication(msalConfig);
        }
+	console.log(clientApplication);
      } ());
 
 (async function main() {
